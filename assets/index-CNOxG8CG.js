@@ -75,7 +75,7 @@
 </main>
   ${C()}
 </div>
-`;let w=null,T=null,E=!1;function D(){let e=document.querySelector(`#root`);if(!e){console.warn(`Root element (#root) not found`);return}try{let t=l.get(),n=t.getTarget()??he,r=t.path,i=typeof n==`function`?n():n.render?.()||``;e.innerHTML=i,!E&&typeof S.mount==`function`&&(S.mount(),E=!0),r!==w&&(w&&T&&(typeof T.unmount==`function`?T.unmount():typeof T.onUnmount==`function`&&T.onUnmount()),typeof n.mount==`function`?(n.mount(),T=n):typeof n.onMount==`function`&&(n.onMount(),T=n),w=r)}catch(t){console.error(t),e.innerHTML=he()}te()}const ge=e=>`
+`;let w=null,T=null,E=!1;function D(){let e=document.querySelector(`#root`);if(!e){console.warn(`Root element (#root) not found`);return}try{let t=l.get(),n=t.getTarget()??he,r=t.path,i=typeof n==`function`?n():n.render?.()||``;e.innerHTML=i,!E&&typeof S.mount==`function`&&(S.mount(),E=!0),r!==w&&(w&&T&&typeof T.unmount==`function`&&T.unmount(),typeof n.mount==`function`&&(n.mount(),T=n),w=r)}catch(t){console.error(t),e.innerHTML=he()}te()}const ge=e=>`
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden product-card" data-product-id="${e.productId||e.id}">
       <!-- 상품 이미지 -->
       <div class="aspect-square bg-gray-100 overflow-hidden cursor-pointer product-image">
