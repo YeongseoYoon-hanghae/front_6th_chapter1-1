@@ -260,7 +260,7 @@
         ${e.isLink?`
           <a href="${e.href}" data-link="" class="hover:text-blue-600 transition-colors">${e.label}</a>
         `:`
-          <button class="breadcrumb-link ${e.category1?`data-category1="${e.category1}"`:``} ${e.category2?`data-category2="${e.category2}"`:``}">${e.label}</button>
+          <button class="breadcrumb-link"${e.category1?` data-category1="${e.category1}"`:``}${e.category2?` data-category2="${e.category2}"`:``}>${e.label}</button>
         `}
       `).join(``)}
     </div>
