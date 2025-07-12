@@ -122,17 +122,28 @@
       </svg>
     </button>
   </div>
-`;let N=!1;const P=S(M,{message:``,type:`info`},{mount:()=>{N||(m(`click`,`.toast-close-btn`,e=>{let t=e.target.closest(`[id^="toast-"]`);t&&t.remove()}),N=!0)}}),Ee=()=>{let e=document.getElementById(`toast-container`);return e||(e=document.createElement(`div`),e.id=`toast-container`,e.className=`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-[100]`,document.body.appendChild(e),P.mount()),e},F=({message:e,type:t=`info`})=>M({message:e,type:t});F.toHTML=M,F.getContainer=Ee,F.create=({message:e,type:t=`info`})=>{let n=document.createElement(`div`);return n.innerHTML=M({message:e,type:t}),n.firstElementChild},F.mount=P.mount,F.unmount=P.unmount;let De=0;const Oe=(e,t,n)=>{let r=`toast-${++De}`,i=F.create({message:e,type:t});return i.id=r,n>0&&setTimeout(()=>i.remove(),n),i},I=(e,t=`info`,n=3e3)=>{let r=F.getContainer(),i=r.querySelectorAll(`[id^="toast-"]`);i.forEach(t=>{let n=t.querySelector(`p`);n&&n.textContent===e&&t.remove()});let a=Oe(e,t,n);r.appendChild(a)},L=(e,t=3e3)=>I(e,`success`,t),R=(e,t=3e3)=>I(e,`error`,t),ke=(e,t=3e3)=>I(e,`info`,t),z={limit:20,sort:`price_asc`,search:``,category1:``,category2:``,page:1},B=async(e={})=>{O.setState({isLoading:!0,error:null});try{let t=await k(e);O.setState({products:t.products||[],pagination:t.pagination||{page:1,limit:20,total:0,totalPages:1,hasNext:!1,hasPrev:!1},isLoading:!1,error:null})}catch(e){console.error(`상품 불러오기 실패:`,e),R(`상품을 불러오는데 실패했습니다. 다시 시도해주세요.`),O.setState({products:[],isLoading:!1,error:e.message||`상품 로딩에 실패했습니다.`})}},Ae=async(e={})=>{let t=O.getState();if(!(t.isLoadingMore||!t.pagination.hasNext)){O.setState({isLoadingMore:!0});try{let n=await k({...e,page:t.pagination.page+1});O.setState({products:[...t.products,...n.products||[]],pagination:n.pagination||t.pagination,isLoadingMore:!1})}catch(e){console.error(`추가 상품 불러오기 실패:`,e),R(`추가 상품을 불러오는데 실패했습니다.`),O.setState({isLoadingMore:!1})}}},V=e=>e.map(e=>ge(e)).join(``),H=(e,t)=>{let n=`
+`;let N=!1;const P=S(M,{message:``,type:`info`},{mount:()=>{N||(m(`click`,`.toast-close-btn`,e=>{let t=e.target.closest(`[id^="toast-"]`);t&&t.remove()}),N=!0)}}),Ee=()=>{let e=document.getElementById(`toast-container`);return e||(e=document.createElement(`div`),e.id=`toast-container`,e.className=`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-[100]`,document.body.appendChild(e),P.mount()),e},F=({message:e,type:t=`info`})=>M({message:e,type:t});F.toHTML=M,F.getContainer=Ee,F.create=({message:e,type:t=`info`})=>{let n=document.createElement(`div`);return n.innerHTML=M({message:e,type:t}),n.firstElementChild},F.mount=P.mount,F.unmount=P.unmount;let De=0;const Oe=(e,t,n)=>{let r=`toast-${++De}`,i=F.create({message:e,type:t});return i.id=r,n>0&&setTimeout(()=>i.remove(),n),i},I=(e,t=`info`,n=3e3)=>{let r=F.getContainer(),i=r.querySelectorAll(`[id^="toast-"]`);i.forEach(t=>{let n=t.querySelector(`p`);n&&n.textContent===e&&t.remove()});let a=Oe(e,t,n);r.appendChild(a)},L=(e,t=3e3)=>I(e,`success`,t),R=(e,t=3e3)=>I(e,`error`,t),ke=(e,t=3e3)=>I(e,`info`,t),z=({message:e=`로딩 중...`}={})=>`
+  <div class="text-center py-4">
+    <div class="inline-flex items-center">
+      <svg class="animate-spin h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" 
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span class="text-sm text-gray-600">${e}</span>
+    </div>
+  </div>
+`,B={limit:20,sort:`price_asc`,search:``,category1:``,category2:``,page:1},V=async(e={})=>{O.setState({isLoading:!0,error:null});try{let t=await k(e);O.setState({products:t.products||[],pagination:t.pagination||{page:1,limit:20,total:0,totalPages:1,hasNext:!1,hasPrev:!1},isLoading:!1,error:null})}catch(e){console.error(`상품 불러오기 실패:`,e),R(`상품을 불러오는데 실패했습니다. 다시 시도해주세요.`),O.setState({products:[],isLoading:!1,error:e.message||`상품 로딩에 실패했습니다.`})}},Ae=async(e={})=>{let t=O.getState();if(!(t.isLoadingMore||!t.pagination.hasNext)){O.setState({isLoadingMore:!0});try{let n=await k({...e,page:t.pagination.page+1});O.setState({products:[...t.products,...n.products||[]],pagination:n.pagination||t.pagination,isLoadingMore:!1})}catch(e){console.error(`추가 상품 불러오기 실패:`,e),R(`추가 상품을 불러오는데 실패했습니다.`),O.setState({isLoadingMore:!1})}}},H=e=>e.map(e=>ge(e)).join(``),U=(e,t)=>{let n=`
     <label class="text-sm text-gray-600">카테고리:</label>
     <button data-breadcrumb="reset" class="text-xs hover:text-blue-800 hover:underline">전체</button>
-  `;return e&&(n+=`<span class="text-xs text-gray-500">&gt;</span><button data-breadcrumb="category1" data-category1="${e}" class="text-xs hover:text-blue-800 hover:underline">${e}</button>`),t&&(n+=`<span class="text-xs text-gray-500">&gt;</span><span class="text-xs text-gray-600 cursor-default">${t}</span>`),n},U=(e,t)=>{if(!e||typeof e!=`object`||Object.keys(e).length===0)return`<div class="text-sm text-gray-500 italic">카테고리 로딩 중...</div>`;if(!t)return Object.keys(e).map(e=>`
+  `;return e&&(n+=`<span class="text-xs text-gray-500">&gt;</span><button data-breadcrumb="category1" data-category1="${e}" class="text-xs hover:text-blue-800 hover:underline">${e}</button>`),t&&(n+=`<span class="text-xs text-gray-500">&gt;</span><span class="text-xs text-gray-600 cursor-default">${t}</span>`),n},W=(e,t)=>{if(!e||typeof e!=`object`||Object.keys(e).length===0)return`<div class="text-sm text-gray-500 italic">카테고리 로딩 중...</div>`;if(!t)return Object.keys(e).map(e=>`
         <button 
           data-category1="${e}" 
           class="category1-filter-btn text-left px-3 py-2 text-sm rounded-md border transition-colors bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
         >
           ${e}
         </button>
-      `).join(``);let n=e[t];if(!n||typeof n!=`object`)return`<div class="text-sm text-gray-500 italic">하위 카테고리가 없습니다</div>`;let r=A(z),i=r.category2;return Object.keys(n).map(e=>{let n=e===i,r=n?`category2-filter-btn text-left px-3 py-2 text-sm rounded-md border transition-colors bg-blue-100 border-blue-300 text-blue-800`:`category2-filter-btn text-left px-3 py-2 text-sm rounded-md border transition-colors bg-white border-gray-300 text-gray-700 hover:bg-gray-50`;return`
+      `).join(``);let n=e[t];if(!n||typeof n!=`object`)return`<div class="text-sm text-gray-500 italic">하위 카테고리가 없습니다</div>`;let r=A(B),i=r.category2;return Object.keys(n).map(e=>{let n=e===i,r=n?`category2-filter-btn text-left px-3 py-2 text-sm rounded-md border transition-colors bg-blue-100 border-blue-300 text-blue-800`:`category2-filter-btn text-left px-3 py-2 text-sm rounded-md border transition-colors bg-white border-gray-300 text-gray-700 hover:bg-gray-50`;return`
         <button 
           data-category1="${t}" 
           data-category2="${e}" 
@@ -140,16 +151,7 @@
         >
           ${e}
         </button>
-      `}).join(``)},W=()=>`
-  <div class="inline-flex items-center">
-    <svg class="animate-spin h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-      <path class="opacity-75" fill="currentColor" 
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-    </svg>
-    <span class="text-sm text-gray-600">상품을 불러오는 중...</span>
-  </div>
-`,je=e=>`
+      `}).join(``)},je=e=>`
   <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
     <div class="text-red-500 mb-4">
       <svg class="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +164,7 @@
       다시 시도
     </button>
   </div>
-`,Me=e=>e.isLoading?``:`총 <span class="font-medium text-gray-900">${e.pagination?.total||0}개</span>의 상품`,Ne=()=>{let e=O.getState(),t=A(z);return`
+`,Me=e=>e.isLoading?``:`총 <span class="font-medium text-gray-900">${e.pagination?.total||0}개</span>의 상품`,Ne=()=>{let e=O.getState(),t=A(B);return`
     <div class="min-h-screen bg-gray-50">
       ${C()}
       <main class="max-w-md mx-auto px-4 py-4">
@@ -185,17 +187,17 @@
             <!-- 카테고리 필터 -->
             <div class="space-y-2">
               <div class="flex items-center gap-2" id="category-breadcrumb">
-                ${H(t.category1,t.category2)}
+                ${U(t.category1,t.category2)}
               </div>
               ${t.category1?`
               <div class="space-y-2">
                 <div id="category-list" class="flex flex-wrap gap-2">
-                  ${U(e.categories,t.category1)}
+                  ${W(e.categories,t.category1)}
                 </div>
               </div>
               `:`
               <div id="category-list" class="flex flex-wrap gap-2">
-                ${U(e.categories,t.category1)}
+                ${W(e.categories,t.category1)}
               </div>
               `}
             </div>
@@ -235,18 +237,18 @@
           
           <!-- 상품 그리드 -->
           <div class="mb-6" id="products-grid">
-            ${e.isLoading?`<div class="grid grid-cols-2 gap-4">${ve()}</div>`:e.error?je(e.error):`<div class="grid grid-cols-2 gap-4">${V(e.products)}</div>`}
+            ${e.isLoading?`<div class="grid grid-cols-2 gap-4">${ve()}</div>`:e.error?je(e.error):`<div class="grid grid-cols-2 gap-4">${H(e.products)}</div>`}
           </div>
           
           <!-- 하단 메시지 -->
           <div class="text-center py-4 bottom-message">
-            ${e.isLoading||e.isLoadingMore?W():e.pagination?.hasNext?`<div class="text-sm text-gray-500">더 많은 상품을 보려면 스크롤하세요</div>`:`<div class="text-sm text-gray-500">모든 상품을 확인했습니다</div>`}
+            ${e.isLoading||e.isLoadingMore?z({message:`상품을 불러오는 중...`}):e.pagination?.hasNext?`<div class="text-sm text-gray-500">더 많은 상품을 보려면 스크롤하세요</div>`:`<div class="text-sm text-gray-500">모든 상품을 확인했습니다</div>`}
           </div>
         </div>
       </main>
       ${w()}
     </div>
-  `},Pe=()=>O.subscribe((e,t)=>{if(!t||e.categories!==t.categories){let t=A(z);x(`#category-list`,U(e.categories,t.category1)),x(`#category-breadcrumb`,H(t.category1,t.category2))}if((!t||e.products!==t.products||e.isLoading!==t.isLoading||e.error!==t.error)&&x(`#products-grid`,e.isLoading?`<div class="grid grid-cols-2 gap-4">${ve()}</div>`:e.error?je(e.error):`<div class="grid grid-cols-2 gap-4">${V(e.products)}</div>`),x(`#product-count`,Me(e)),!t||e.isLoading!==t.isLoading||e.isLoadingMore!==t.isLoadingMore||e.pagination!==t.pagination){let t=e.isLoading||e.isLoadingMore?W():e.pagination?.hasNext?`<div class="text-sm text-gray-500">더 많은 상품을 보려면 스크롤하세요</div>`:`<div class="text-sm text-gray-500">모든 상품을 확인했습니다</div>`;x(`.bottom-message`,t)}}),Fe=()=>{m(`input`,`#search-input`,e=>{j({search:e.target.value,page:1},z,B)}),m(`change`,`#sort-select`,e=>{j({sort:e.target.value,page:1},z,B)}),m(`change`,`#limit-select`,e=>{j({limit:parseInt(e.target.value),page:1},z,B)}),m(`click`,`.category1-filter-btn`,e=>{let t=e.target.dataset.category1;j({category1:t,category2:``,page:1},z,B);let n=A(z),r=O.getState().categories;x(`#category-list`,U(r,n.category1)),x(`#category-breadcrumb`,H(n.category1,n.category2))}),m(`click`,`.category2-filter-btn`,e=>{let t=e.target.dataset.category1,n=e.target.dataset.category2;j({category1:t,category2:n,page:1},z,B);let r=A(z),i=O.getState().categories;x(`#category-list`,U(i,r.category1)),x(`#category-breadcrumb`,H(r.category1,r.category2))}),m(`click`,`[data-breadcrumb="reset"]`,()=>{j({category1:``,category2:``,page:1},z,B);let e=A(z),t=O.getState().categories;x(`#category-list`,U(t,e.category1)),x(`#category-breadcrumb`,H(e.category1,e.category2))}),m(`click`,`[data-breadcrumb="category1"]`,()=>{let e=A(z);j({category1:e.category1,category2:``,page:1},z,B);let t=A(z),n=O.getState().categories;x(`#category-list`,U(n,t.category1)),x(`#category-breadcrumb`,H(t.category1,t.category2))}),m(`click`,`.add-to-cart-btn`,e=>{e.preventDefault(),e.stopPropagation();let t=e.target.dataset.productId,n=O.getState().products,r=n.find(e=>(e.productId||e.id)===t);r&&(v(r,1),L(`장바구니에 추가되었습니다`))}),m(`click`,`.product-card`,e=>{if(e.target.closest(`.add-to-cart-btn`))return;let t=e.target.closest(`.product-card`),n=t?.dataset?.productId;n&&l.get().push(`/product/${n}`)}),m(`click`,`#retry-button`,()=>{let e=A(z);B(e)})},Ie=()=>Ce({onLoadMore:()=>{let e=A(z);Ae(e)},threshold:100,shouldLoad:()=>{let e=O.getState();return!e.isLoadingMore&&e.pagination?.hasNext}}),Le=async e=>{try{O.setState({isLoading:!0});let[t,n]=await Promise.all([be(),k(e)]);O.setState({categories:t,products:n.products||[],pagination:n.pagination||{page:1,limit:20,total:0,totalPages:1,hasNext:!1,hasPrev:!1},isLoading:!1})}catch(e){console.error(`데이터 로딩 실패:`,e),R(`데이터를 불러오는데 실패했습니다. 다시 시도해주세요.`),O.setState({categories:{},products:[],isLoading:!1,error:e.message||`데이터 로딩에 실패했습니다.`})}};let G=null,K=null;const Re=()=>{G=Pe(),Fe(),K=Ie()},ze=S(Ne,{},{mount:async()=>{let e=A(z);Re(),await Le(e)},unmount:()=>{G&&(G(),G=null),K&&(K(),K=null)}}),Be=({items:e=[{label:`홈`,href:`/`,isLink:!0}]}={})=>`
+  `},Pe=()=>O.subscribe((e,t)=>{if(!t||e.categories!==t.categories){let t=A(B);x(`#category-list`,W(e.categories,t.category1)),x(`#category-breadcrumb`,U(t.category1,t.category2))}if((!t||e.products!==t.products||e.isLoading!==t.isLoading||e.error!==t.error)&&x(`#products-grid`,e.isLoading?`<div class="grid grid-cols-2 gap-4">${ve()}</div>`:e.error?je(e.error):`<div class="grid grid-cols-2 gap-4">${H(e.products)}</div>`),x(`#product-count`,Me(e)),!t||e.isLoading!==t.isLoading||e.isLoadingMore!==t.isLoadingMore||e.pagination!==t.pagination){let t=e.isLoading||e.isLoadingMore?z({message:`상품을 불러오는 중...`}):e.pagination?.hasNext?`<div class="text-sm text-gray-500">더 많은 상품을 보려면 스크롤하세요</div>`:`<div class="text-sm text-gray-500">모든 상품을 확인했습니다</div>`;x(`.bottom-message`,t)}}),Fe=()=>{m(`input`,`#search-input`,e=>{j({search:e.target.value,page:1},B,V)}),m(`change`,`#sort-select`,e=>{j({sort:e.target.value,page:1},B,V)}),m(`change`,`#limit-select`,e=>{j({limit:parseInt(e.target.value),page:1},B,V)}),m(`click`,`.category1-filter-btn`,e=>{let t=e.target.dataset.category1;j({category1:t,category2:``,page:1},B,V);let n=A(B),r=O.getState().categories;x(`#category-list`,W(r,n.category1)),x(`#category-breadcrumb`,U(n.category1,n.category2))}),m(`click`,`.category2-filter-btn`,e=>{let t=e.target.dataset.category1,n=e.target.dataset.category2;j({category1:t,category2:n,page:1},B,V);let r=A(B),i=O.getState().categories;x(`#category-list`,W(i,r.category1)),x(`#category-breadcrumb`,U(r.category1,r.category2))}),m(`click`,`[data-breadcrumb="reset"]`,()=>{j({category1:``,category2:``,page:1},B,V);let e=A(B),t=O.getState().categories;x(`#category-list`,W(t,e.category1)),x(`#category-breadcrumb`,U(e.category1,e.category2))}),m(`click`,`[data-breadcrumb="category1"]`,()=>{let e=A(B);j({category1:e.category1,category2:``,page:1},B,V);let t=A(B),n=O.getState().categories;x(`#category-list`,W(n,t.category1)),x(`#category-breadcrumb`,U(t.category1,t.category2))}),m(`click`,`.add-to-cart-btn`,e=>{e.preventDefault(),e.stopPropagation();let t=e.target.dataset.productId,n=O.getState().products,r=n.find(e=>(e.productId||e.id)===t);r&&(v(r,1),L(`장바구니에 추가되었습니다`))}),m(`click`,`.product-card`,e=>{if(e.target.closest(`.add-to-cart-btn`))return;let t=e.target.closest(`.product-card`),n=t?.dataset?.productId;n&&l.get().push(`/product/${n}`)}),m(`click`,`#retry-button`,()=>{let e=A(B);V(e)})},Ie=()=>Ce({onLoadMore:()=>{let e=A(B);Ae(e)},threshold:100,shouldLoad:()=>{let e=O.getState();return!e.isLoadingMore&&e.pagination?.hasNext}}),Le=async e=>{try{O.setState({isLoading:!0});let[t,n]=await Promise.all([be(),k(e)]);O.setState({categories:t,products:n.products||[],pagination:n.pagination||{page:1,limit:20,total:0,totalPages:1,hasNext:!1,hasPrev:!1},isLoading:!1})}catch(e){console.error(`데이터 로딩 실패:`,e),R(`데이터를 불러오는데 실패했습니다. 다시 시도해주세요.`),O.setState({categories:{},products:[],isLoading:!1,error:e.message||`데이터 로딩에 실패했습니다.`})}};let G=null,K=null;const Re=()=>{G=Pe(),Fe(),K=Ie()},ze=S(Ne,{},{mount:async()=>{let e=A(B);Re(),await Le(e)},unmount:()=>{G&&(G(),G=null),K&&(K(),K=null)}}),Be=({items:e=[{label:`홈`,href:`/`,isLink:!0}]}={})=>`
   <nav class="mb-4">
     <div class="flex items-center space-x-2 text-sm text-gray-600">
       ${e.map((e,t)=>`
