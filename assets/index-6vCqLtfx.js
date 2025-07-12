@@ -287,7 +287,7 @@
         </button>
       </div>
     </div>
-  `,He=e=>Be({items:[{label:`홈`,href:`/`,isLink:!0},{label:e.category1||`생활/건강`,isLink:!1,category1:e.category1||`생활/건강`},{label:e.category2||`생활용품`,isLink:!1,category2:e.category2||`생활용품`}]}),Ue=e=>`
+  `,He=e=>Be({items:[{label:`홈`,href:`/`,isLink:!0},{label:e.category1||`생활/건강`,isLink:!0,href:`/?category1=${encodeURIComponent(e.category1||`생활/건강`)}`,category1:e.category1||`생활/건강`},{label:e.category2||`생활용품`,isLink:!0,href:`/?category1=${encodeURIComponent(e.category1||`생활/건강`)}&category2=${encodeURIComponent(e.category2||`생활용품`)}`,category2:e.category2||`생활용품`}]}),Ue=e=>`
     <div class="bg-white rounded-lg shadow-sm mb-6">
       <!-- 상품 이미지 -->
       <div class="p-4">
